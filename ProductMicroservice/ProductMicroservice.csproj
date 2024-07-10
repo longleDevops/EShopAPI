@@ -56,7 +56,6 @@
     <Compile Remove="ProductAPI.Infrastructure\Services\CustomerService.cs" />
     <Compile Remove="ProductAPI.ApplicationCore\Contracts\Repositories\IProductRepository.cs" />
     <Compile Remove="ProductAPI.Infrastructure\Repositories\ProductRepository.cs" />
-    <Compile Remove="ProductAPI.ApplicationCore\Entities\VariationValue.cs" />
     <Compile Remove="ProductAPI.Infrastructure\Data\EShopDbContext.cs" />
     <Compile Remove="ProductAPI.ApplicationCore\Entities\Product.cs" />
   </ItemGroup>
@@ -83,10 +82,6 @@
     <None Remove="ProductAPI.Infrastructure\obj\Debug\net8.0\ProductA.500DF979.Up2Date" />
     <None Remove="ProductAPI.ApplicationCore\obj\ProductAPI.ApplicationCore.csproj.nuget.g.targets" />
     <None Remove="ProductAPI.ApplicationCore\obj\Debug\net8.0\ProductAPI.ApplicationCore.csproj.AssemblyReference.cache" />
-    <None Remove="ProductAPI.ApplicationCore\obj\ProductAPI.ApplicationCore.csproj.nuget.g.props" />
-    <None Remove="ProductAPI.ApplicationCore\obj\project.nuget.cache" />
-    <None Remove="ProductAPI.Infrastructure\obj\ProductAPI.Infrastructure.csproj.nuget.g.props" />
-    <None Remove="ProductAPI.Infrastructure\obj\project.nuget.cache" />
     <None Remove="Controllers\" />
   </ItemGroup>
   <ItemGroup>
@@ -94,8 +89,6 @@
     <Content Remove="ProductAPI.Infrastructure\bin\Debug\net8.0\ProductAPI.Infrastructure.deps.json" />
     <Content Remove="ProductAPI.Infrastructure\bin\Debug\net8.0\ProductAPI.Infrastructure.runtimeconfig.json" />
     <Content Remove="ProductAPI.ApplicationCore\obj\project.assets.json" />
-    <Content Remove="ProductAPI.ApplicationCore\obj\ProductAPI.ApplicationCore.csproj.nuget.dgspec.json" />
-    <Content Remove="ProductAPI.Infrastructure\obj\ProductAPI.Infrastructure.csproj.nuget.dgspec.json" />
     <Content Remove="ProductAPI.Infrastructure\obj\project.assets.json" />
     <Content Remove="appsettings.Development.json" />
   </ItemGroup>

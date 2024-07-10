@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  ordermicroserviceapi:
+    image: ${DOCKER_REGISTRY-}ordermicroserviceapi
+    build:
+      context: .
+      dockerfile: OrderMicroservice/Dockerfile

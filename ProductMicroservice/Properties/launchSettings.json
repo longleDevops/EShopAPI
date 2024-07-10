@@ -27,10 +27,10 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "ProductMicroserviceAPI": {
+    "ProductMicroservice": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "http://localhost:54396",
+      "applicationUrl": "http://localhost:60043",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

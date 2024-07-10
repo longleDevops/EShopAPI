@@ -8,8 +8,23 @@
 
   <ItemGroup>
     <None Remove="Contracts\" />
+    <None Remove="Contracts\Services\" />
+    <None Remove="Contracts\Repositories\" />
+    <None Remove="Entities\" />
+    <None Remove="Models\" />
+    <None Remove="Models\ResponseModels\" />
+    <None Remove="Models\RequestModels\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Contracts\" />
+    <Folder Include="Contracts\Services\" />
+    <Folder Include="Contracts\Repositories\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Models\" />
+    <Folder Include="Models\ResponseModels\" />
+    <Folder Include="Models\RequestModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
   </ItemGroup>
 </Project>

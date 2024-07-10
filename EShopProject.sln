@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProductMicroservice", "Prod
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CustomerMicroservice", "CustomerMicroservice", "{1FC39302-59FA-476D-AC37-53F78A9478A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductMicroserviceAPI", "ProductMicroservice\ProductMicroserviceAPI.csproj", "{3DE9DCC0-8349-406E-A2AC-2B97429AADA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductMicroservice", "ProductMicroservice\ProductMicroservice.csproj", "{3DE9DCC0-8349-406E-A2AC-2B97429AADA6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductAPI.ApplicationCore", "ProductMicroservice\ProductAPI.ApplicationCore\ProductAPI.ApplicationCore.csproj", "{3C40057E-3F60-4203-ABF8-6D8C3A8C8BE6}"
 EndProject
@@ -19,11 +19,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderMicroservice", "OrderM
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShippingMicroservice", "ShippingMicroservice", "{B4F81C24-304B-4D79-BD4D-BCC2BC7E3D70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderMicroservice", "OrderMicroservice\OrderMicroservice.csproj", "{D7D665A4-6BC0-4657-AA24-C30D0F6FC81D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderMicroserviceAPI", "OrderMicroservice\OrderMicroserviceAPI.csproj", "{D7D665A4-6BC0-4657-AA24-C30D0F6FC81D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderAPI.ApplicationCore", "OrderMicroservice\OrderAPI.ApplicationCore\OrderAPI.ApplicationCore.csproj", "{6F14B7B7-EB9D-4B6E-B1E6-BD857868545C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OderAPI.Infrastructure", "OderAPI.Infrastructure\OderAPI.Infrastructure.csproj", "{9204A29E-A594-4A71-B1B9-A12E41C57B34}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderAPI.Infrastructure", "OrderMicroservice\OrderAPI.Infrastructure\OrderAPI.Infrastructure.csproj", "{08BD6568-33BE-4061-B5BB-C2272785B4C9}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{13127C50-4032-43C7-8C1D-E1EB7756ED58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +57,14 @@ Global
 		{6F14B7B7-EB9D-4B6E-B1E6-BD857868545C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F14B7B7-EB9D-4B6E-B1E6-BD857868545C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F14B7B7-EB9D-4B6E-B1E6-BD857868545C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9204A29E-A594-4A71-B1B9-A12E41C57B34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9204A29E-A594-4A71-B1B9-A12E41C57B34}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9204A29E-A594-4A71-B1B9-A12E41C57B34}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9204A29E-A594-4A71-B1B9-A12E41C57B34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08BD6568-33BE-4061-B5BB-C2272785B4C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08BD6568-33BE-4061-B5BB-C2272785B4C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08BD6568-33BE-4061-B5BB-C2272785B4C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08BD6568-33BE-4061-B5BB-C2272785B4C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13127C50-4032-43C7-8C1D-E1EB7756ED58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13127C50-4032-43C7-8C1D-E1EB7756ED58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13127C50-4032-43C7-8C1D-E1EB7756ED58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13127C50-4032-43C7-8C1D-E1EB7756ED58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,5 +79,6 @@ Global
 		{60092109-A526-4EFA-B1DA-62091D3BE454} = {DEFA2CE4-659B-4EA1-8F9D-2AA4F4046905}
 		{D7D665A4-6BC0-4657-AA24-C30D0F6FC81D} = {2816D56B-496F-444A-8BAA-9AD29A5FC0B9}
 		{6F14B7B7-EB9D-4B6E-B1E6-BD857868545C} = {2816D56B-496F-444A-8BAA-9AD29A5FC0B9}
+		{08BD6568-33BE-4061-B5BB-C2272785B4C9} = {2816D56B-496F-444A-8BAA-9AD29A5FC0B9}
 	EndGlobalSection
 EndGlobal
