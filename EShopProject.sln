@@ -25,8 +25,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderAPI.ApplicationCore", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderAPI.Infrastructure", "OrderMicroservice\OrderAPI.Infrastructure\OrderAPI.Infrastructure.csproj", "{08BD6568-33BE-4061-B5BB-C2272785B4C9}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{13127C50-4032-43C7-8C1D-E1EB7756ED58}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryMicroservice", "InventoryMicroservice", "{7F8165E7-F083-4CA3-A74C-EA3517A8AD3B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryAPI", "..\InventoryAPI\InventoryAPI.csproj", "{06BBD093-2D3D-4F2E-AC5F-75704DDBB0DB}"
@@ -65,10 +63,6 @@ Global
 		{08BD6568-33BE-4061-B5BB-C2272785B4C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08BD6568-33BE-4061-B5BB-C2272785B4C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08BD6568-33BE-4061-B5BB-C2272785B4C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13127C50-4032-43C7-8C1D-E1EB7756ED58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13127C50-4032-43C7-8C1D-E1EB7756ED58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13127C50-4032-43C7-8C1D-E1EB7756ED58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13127C50-4032-43C7-8C1D-E1EB7756ED58}.Release|Any CPU.Build.0 = Release|Any CPU
 		{06BBD093-2D3D-4F2E-AC5F-75704DDBB0DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{06BBD093-2D3D-4F2E-AC5F-75704DDBB0DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06BBD093-2D3D-4F2E-AC5F-75704DDBB0DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
