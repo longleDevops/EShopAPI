@@ -6,3 +6,11 @@ services:
     build:
       context: .
       dockerfile: OrderMicroservice/Dockerfile
+    ports:
+    - '65123:80'
+  inventoryapi:
+    image: ${DOCKER_REGISTRY-}inventoryapi
+    build:
+      context: .
+      dockerfile: ../InventoryAPI/Dockerfile
+

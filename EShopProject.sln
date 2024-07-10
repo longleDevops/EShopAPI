@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderAPI.Infrastructure", "
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{13127C50-4032-43C7-8C1D-E1EB7756ED58}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryMicroservice", "InventoryMicroservice", "{7F8165E7-F083-4CA3-A74C-EA3517A8AD3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryAPI", "..\InventoryAPI\InventoryAPI.csproj", "{06BBD093-2D3D-4F2E-AC5F-75704DDBB0DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +69,10 @@ Global
 		{13127C50-4032-43C7-8C1D-E1EB7756ED58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13127C50-4032-43C7-8C1D-E1EB7756ED58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13127C50-4032-43C7-8C1D-E1EB7756ED58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06BBD093-2D3D-4F2E-AC5F-75704DDBB0DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06BBD093-2D3D-4F2E-AC5F-75704DDBB0DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06BBD093-2D3D-4F2E-AC5F-75704DDBB0DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06BBD093-2D3D-4F2E-AC5F-75704DDBB0DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,5 +88,6 @@ Global
 		{D7D665A4-6BC0-4657-AA24-C30D0F6FC81D} = {2816D56B-496F-444A-8BAA-9AD29A5FC0B9}
 		{6F14B7B7-EB9D-4B6E-B1E6-BD857868545C} = {2816D56B-496F-444A-8BAA-9AD29A5FC0B9}
 		{08BD6568-33BE-4061-B5BB-C2272785B4C9} = {2816D56B-496F-444A-8BAA-9AD29A5FC0B9}
+		{06BBD093-2D3D-4F2E-AC5F-75704DDBB0DB} = {7F8165E7-F083-4CA3-A74C-EA3517A8AD3B}
 	EndGlobalSection
 EndGlobal

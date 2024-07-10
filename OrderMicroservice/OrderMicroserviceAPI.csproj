@@ -19,7 +19,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
-    <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.7.0" />
   </ItemGroup>
 
   
@@ -107,19 +107,10 @@
     <None Remove="OrderAPI.ApplicationCore\obj\Debug\net8.0\OrderAPI.ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig" />
     <None Remove="OrderAPI.ApplicationCore\obj\Debug\net8.0\OrderAPI.ApplicationCore.pdb" />
     <None Remove="OrderAPI.ApplicationCore\obj\Debug\net8.0\refint\OrderAPI.ApplicationCore.dll" />
-    <None Remove="OrderAPI.Infrastructure\obj\Debug\net8.0\ref\OrderAPI.Infrastructure.dll" />
-    <None Remove="OrderAPI.ApplicationCore\obj\Debug\net8.0\ref\OrderAPI.ApplicationCore.dll" />
     <None Remove="OrderAPI.ApplicationCore\obj\project.nuget.cache" />
     <None Remove="OrderAPI.ApplicationCore\obj\OrderAPI.ApplicationCore.csproj.nuget.g.props" />
-    <None Remove="OrderAPI.ApplicationCore\bin\Debug\net8.0\OrderAPI.ApplicationCore.dll" />
-    <None Remove="OrderAPI.ApplicationCore\bin\Debug\net8.0\OrderAPI.ApplicationCore.pdb" />
     <None Remove="OrderAPI.Infrastructure\obj\project.nuget.cache" />
     <None Remove="OrderAPI.Infrastructure\obj\OrderAPI.Infrastructure.csproj.nuget.g.props" />
-    <None Remove="OrderAPI.Infrastructure\obj\Debug\net8.0\OrderAPI.Infrastructure.csproj.AssemblyReference.cache" />
-    <None Remove="OrderAPI.Infrastructure\bin\Debug\net8.0\OrderAPI.ApplicationCore.dll" />
-    <None Remove="OrderAPI.Infrastructure\bin\Debug\net8.0\OrderAPI.ApplicationCore.pdb" />
-    <None Remove="OrderAPI.Infrastructure\bin\Debug\net8.0\OrderAPI.Infrastructure.dll" />
-    <None Remove="OrderAPI.Infrastructure\bin\Debug\net8.0\OrderAPI.Infrastructure.pdb" />
     <None Remove="OrderAPI.Infrastructure\obj\Release\net8.0\OrderAPI.Infrastructure.assets.cache" />
     <None Remove="OrderAPI.Infrastructure\obj\Release\net8.0\OrderAPI.Infrastructure.csproj.AssemblyReference.cache" />
     <None Remove="OrderAPI.Infrastructure\obj\Release\net8.0\OrderAPI.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig" />

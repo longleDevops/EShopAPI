@@ -6,3 +6,10 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - "80"
+
+  inventoryapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
