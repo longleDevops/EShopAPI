@@ -14,7 +14,6 @@ namespace ProductAPI.ApplicationCore.Entities
 		public int ProductCategoryId { get; set; }
 		public ProductCategory ProductCategory { get; set; } = null!;
 
-		public ICollection<ProductVariationValues> VariationValuesOfProduct { get; set; } = null!;
 	}
 }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace ProductAPI.ApplicationCore.Entities
 {
 	public class VariationValue
@@ -7,6 +8,5 @@ namespace ProductAPI.ApplicationCore.Entities
 		public string Value { get; set; }
 
 		public int VariationId { get; set; }
-		public CategoryVariation CategoryVariation { get; set; } = null!;
-
-		public ICollection<ProductVariationValues> ProductOfVariationValues { get; set; } = null!;
+	}
+}		

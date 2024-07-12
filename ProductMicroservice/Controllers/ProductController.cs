@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using ProductAPI.ApplicationCore.Contracts.Services;
 using ProductAPI.ApplicationCore.Entities;
 
+
 namespace ProductMicroserviceAPI.Controllers
 {
 	[ApiController]

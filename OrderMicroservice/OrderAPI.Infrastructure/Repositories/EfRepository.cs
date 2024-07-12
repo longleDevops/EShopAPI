@@ -41,7 +41,7 @@ namespace OrderAPI.Infrastructure.Repositories
 
         public async Task<T> GetById(int id)
         {
-            return await _dbContext.Set<T>().FindAsync(id);
+            return await _dbContext.Set<T>().FindAsync(id) ;
         }
 
         public async Task<int> Update(T entity)

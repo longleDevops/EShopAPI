@@ -58,6 +58,8 @@
     <Compile Remove="ProductAPI.Infrastructure\Repositories\ProductRepository.cs" />
     <Compile Remove="ProductAPI.Infrastructure\Data\EShopDbContext.cs" />
     <Compile Remove="ProductAPI.ApplicationCore\Entities\Product.cs" />
+    <Compile Remove="ProductAPI.ApplicationCore\**" />
+    <Compile Remove="ProductAPI.Infrastructure\**" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="ProductAPI.ApplicationCore\obj\Debug\net8.0\ProductAPI.ApplicationCore.AssemblyInfoInputs.cache" />
@@ -83,6 +85,8 @@
     <None Remove="ProductAPI.ApplicationCore\obj\ProductAPI.ApplicationCore.csproj.nuget.g.targets" />
     <None Remove="ProductAPI.ApplicationCore\obj\Debug\net8.0\ProductAPI.ApplicationCore.csproj.AssemblyReference.cache" />
     <None Remove="Controllers\" />
+    <None Remove="ProductAPI.ApplicationCore\**" />
+    <None Remove="ProductAPI.Infrastructure\**" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="ProductAPI.ApplicationCore\bin\Debug\net8.0\ProductAPI.ApplicationCore.deps.json" />
@@ -91,13 +95,26 @@
     <Content Remove="ProductAPI.ApplicationCore\obj\project.assets.json" />
     <Content Remove="ProductAPI.Infrastructure\obj\project.assets.json" />
     <Content Remove="appsettings.Development.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="ProductAPI.Infrastructure\ProductAPI.Infrastructure.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
+    <Content Remove="ProductAPI.ApplicationCore\**" />
+    <Content Remove="ProductAPI.Infrastructure\**" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="ProductAPI.ApplicationCore\**" />
+    <EmbeddedResource Remove="ProductAPI.Infrastructure\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="ProductAPI.ApplicationCore\obj\ProductAPI.ApplicationCore.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="ProductAPI.ApplicationCore\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="ProductAPI.ApplicationCore\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="ProductAPI.Infrastructure\obj\ProductAPI.Infrastructure.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="ProductAPI.Infrastructure\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="ProductAPI.Infrastructure\obj\project.packagespec.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="ProductAPI.ApplicationCore\ProductAPI.ApplicationCore.csproj" />
+    <ProjectReference Include="ProductAPI.Infrastructure\ProductAPI.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

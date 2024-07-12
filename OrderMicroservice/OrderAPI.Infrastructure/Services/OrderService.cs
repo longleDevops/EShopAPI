@@ -3,6 +3,7 @@ using OrderAPI.ApplicationCore.Contracts.Repositories;
 using OrderAPI.ApplicationCore.Contracts.Services;
 using OrderAPI.ApplicationCore.Entities;
 using OrderAPI.ApplicationCore.Models.RequestModels;
+using OrderAPI.ApplicationCore.Models.ResponseModels;
 
 namespace OrderAPI.Infrastructure.Services
 {
@@ -62,10 +63,19 @@ namespace OrderAPI.Infrastructure.Services
             return await _orderRepository.Update(order);
         }
 
+        public Task<OrderResponseModel> OrderCompleted(decimal bill, Guid customerId)
+        {
+            var entity = _orderRepository.GetOrderByBillCustomerId(bill, customerId);
+            return null;
+        }
+
+        
         public Task<IEnumerable<Order>> ViewOrders(int pageIndex, int pageSize)
         {
             throw new NotImplementedException();
         }
+        
+        
     }
 }
 

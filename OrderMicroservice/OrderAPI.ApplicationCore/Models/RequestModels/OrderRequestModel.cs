@@ -6,7 +6,7 @@ namespace OrderAPI.ApplicationCore.Models.RequestModels
 	public class OrderRequestModel
 	{
         public DateTime OrderDate { get; set; }
-        public int CustomerId { get; set; }
+        public Guid CustomerId { get; set; }
         public string CustomerName { get; set; }
         public string PaymentMethod { get; set; }
         public string PaymentName { get; set; }

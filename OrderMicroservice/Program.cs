@@ -1,4 +1,5 @@
-﻿using ProductAPI.Infrastructure.Data;
+﻿using Infrastructure.Implementation.Service;
+using ProductAPI.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using OrderAPI.ApplicationCore.Contracts.Repositories;
 using OrderAPI.Infrastructure.Repositories;
@@ -21,6 +22,7 @@ builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
 
 // Services
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IRabbitMqProducerConsumer, RabitMqProducerConsumer>();
 
 
 builder.Services.AddDbContext<EShopDbContext>(options =>

@@ -45,15 +45,7 @@ namespace ProductAPI.Infrastructure.Data
             builder.ToTable("ProductVariationvalues");
             builder.HasKey(pv => new {pv.ProductId,pv.VariationValueId});
 
-            builder.HasOne(pv => pv.Product)
-      .WithMany(p => p.VariationValuesOfProduct)
-      .HasForeignKey(pv => pv.ProductId)
-      .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasOne(pv => pv.VariationValue)
-                .WithMany(v => v.ProductOfVariationValues)
-                .HasForeignKey(pv => pv.VariationValueId)
-                .OnDelete(DeleteBehavior.Restrict);
+            
 
         }
         private void ConfigureCategoryVariation(EntityTypeBuilder<CategoryVariation> builder)
@@ -61,13 +53,12 @@ namespace ProductAPI.Infrastructure.Data
             builder.ToTable("CatergoryVariation");
             builder.HasKey(c => c.Id);
         }
+
         private void ConfigureProductCategory(EntityTypeBuilder<ProductCategory> builder)
         {
-            builder.ToTable("ProductCategory");
-            builder.HasKey(c => c.Id);
+	        builder.ToTable("ProductCategory");
+	        builder.HasKey(c => c.Id);
         }
-
-
-    }
+	}
 }
 
