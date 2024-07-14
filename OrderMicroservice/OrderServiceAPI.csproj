@@ -6,6 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerComposeProjectPath>../docker-compose.dcproj</DockerComposeProjectPath>
     <RootNamespace>OrderMicroserviceAPI</RootNamespace>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
@@ -41,6 +42,9 @@
     <Content Remove="OrderAPI.ApplicationCore\obj\Release\net8.0\OrderAPI.ApplicationCore.sourcelink.json" />
     <Content Remove="OrderAPI.Infrastructure\**" />
     <Content Remove="OrderAPI.ApplicationCore\**" />
+    <Content Include="..\.dockerignore">
+      <Link>.dockerignore</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />

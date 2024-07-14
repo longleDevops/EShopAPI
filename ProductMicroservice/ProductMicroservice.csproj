@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
@@ -97,6 +98,9 @@
     <Content Remove="appsettings.Development.json" />
     <Content Remove="ProductAPI.ApplicationCore\**" />
     <Content Remove="ProductAPI.Infrastructure\**" />
+    <Content Include="..\.dockerignore">
+      <Link>.dockerignore</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />

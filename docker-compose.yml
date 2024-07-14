@@ -1,16 +1,15 @@
-version: '3.4'
-
-services:
-  ordermicroserviceapi:
-    image: ${DOCKER_REGISTRY-}ordermicroserviceapi
+﻿services:  
+  orderserviceapi:
+    image: orderserviceapi1
     build:
       context: .
       dockerfile: OrderMicroservice/Dockerfile
     ports:
-    - '65123:80'
-  inventoryapi:
-    image: ${DOCKER_REGISTRY-}inventoryapi
+      - 8081:8080
+  productmicroservice:
+    image: productmicroservice1
     build:
       context: .
-      dockerfile: ../InventoryAPI/Dockerfile
-
+      dockerfile: ProductMicroservice/Dockerfile
+    ports:
+      - 8082:8080
