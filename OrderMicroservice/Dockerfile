@@ -3,6 +3,8 @@ USER $APP_UID
 WORKDIR /app
 EXPOSE 8080
 
+ENV EShopDbConnection="Server=tcp:eshopdb99.database.windows.net,1433;Initial Catalog=EShopDb;User ID=lelongdinh2015;Password=Kakashi2001@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;"
+
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
@@ -17,8 +19,6 @@ RUN dotnet build "OrderServiceAPI.csproj" -c $BUILD_CONFIGURATION -o /app/build
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "OrderServiceAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
-
-ENV EShopDbConnection="Server=tcp:eshopdb99.database.windows.net,1433;Initial Catalog=EShopDb;User ID=lelongdinh2015;Password=Kakashi2001@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;"
 
 FROM base AS final
 WORKDIR /app
