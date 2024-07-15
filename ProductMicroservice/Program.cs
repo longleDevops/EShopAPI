@@ -24,7 +24,8 @@ builder.Services.AddScoped<ICustomerService, CustomerService>();
 
 builder.Services.AddDbContext<EShopDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("EShopDbConnection"));
+    // options.UseSqlServer(builder.Configuration.GetConnectionString("EShopDbConnection"));
+    options.UseSqlServer(Environment.GetEnvironmentVariable("EShopDbConnection"));
 });
 
 var app = builder.Build();

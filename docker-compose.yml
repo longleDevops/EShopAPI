@@ -1,13 +1,13 @@
 ﻿services:  
   orderserviceapi:
-    image: orderserviceapi1
+    image: orderserviceapi
     build:
       context: .
       dockerfile: OrderMicroservice/Dockerfile
     ports:
       - 8081:8080
   productmicroservice:
-    image: productmicroservice1
+    image: productmicroservice
     build:
       context: .
       dockerfile: ProductMicroservice/Dockerfile

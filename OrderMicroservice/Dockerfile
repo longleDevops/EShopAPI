@@ -18,7 +18,7 @@ FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "OrderServiceAPI.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-ENV Server="tcp:eshopdb99.database.windows.net,1433;Initial Catalog=EShopDb;User ID=lelongdinh2015;Password=Kakashi2001@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;"
+ENV EShopDbConnection="Server=tcp:eshopdb99.database.windows.net,1433;Initial Catalog=EShopDb;User ID=lelongdinh2015;Password=Kakashi2001@;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;"
 
 FROM base AS final
 WORKDIR /app
