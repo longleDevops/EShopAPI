@@ -157,6 +157,9 @@
     <_ContentIncludedByDefault Remove="OrderAPI.ApplicationCore\obj\OrderAPI.ApplicationCore.csproj.nuget.dgspec.json" />
     <_ContentIncludedByDefault Remove="OrderAPI.ApplicationCore\obj\project.assets.json" />
     <_ContentIncludedByDefault Remove="OrderAPI.ApplicationCore\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="OrderAPI.Infrastructure\bin\Debug\net8.0\OrderAPI.Infrastructure.deps.json" />
+    <_ContentIncludedByDefault Remove="OrderAPI.Infrastructure\bin\Debug\net8.0\OrderAPI.Infrastructure.runtimeconfig.json" />
+    <_ContentIncludedByDefault Remove="OrderAPI.Infrastructure\obj\Debug\net8.0\OrderAPI.Infrastructure.sourcelink.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="OrderAPI.Infrastructure\OrderAPI.Infrastructure.csproj" />
