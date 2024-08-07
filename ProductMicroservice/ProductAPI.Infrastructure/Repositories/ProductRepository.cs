@@ -13,46 +13,39 @@ namespace ProductAPI.Infrastructure.Repositories
 		{
             _dbContext = dbContext;
 		}
+		
+		public async Task<IEnumerable<Product>> GetAllProducts()
+		{
+			return await _dbContext.Products.ToListAsync();
+		}
 
-        public async Task CreateProductAsync(Product product)
-        {
-            _dbContext.Products.Add(product);
-            await _dbContext.SaveChangesAsync();
-        }
+		public async Task<Product> GetProductById(int id)
+		{
+			return await _dbContext.Products.FindAsync(id);
+		}
 
-        public async Task DeleteProductAsync(int id)
-        {
-            var product = await GetProductByIdAsync(id);
-            if (product != null)
-            {
-                _dbContext.Products.Remove(product);
-                await _dbContext.SaveChangesAsync();
-            }
+		public async Task<int> CreateProduct(Product product)
+		{
+			_dbContext.Products.Add(product);
+			return await _dbContext.SaveChangesAsync();
+		}
 
-        }
+		public async Task<int> UpdateProduct(Product product)
+		{
+			_dbContext.Products.Update(product);
+			return await _dbContext.SaveChangesAsync();
+		}
 
-        public async Task<Product> GetProductByIdAsync(int id)
-        {
-            return await _dbContext.Products.FindAsync(id);
-        }
-
-        
-        public async Task<IEnumerable<Product>> GetProductsAsync(int pageIndex, int pageSize)
-        {
-            return await _dbContext.Products.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
-        }
-
-        public async Task<IEnumerable<Product>> GetProductsAsync()
-        {
-            return await _dbContext.Products.ToListAsync();
-        }
-
-        public async Task UpdateProductAsync(Product product)
-        {
-             _dbContext.Products.Update(product);
-            await _dbContext.SaveChangesAsync();
-        }
-
+		public async Task<int> DeleteProduct(int id)
+		{
+			
+			var product = await _dbContext.Products.FindAsync(id);
+			if (product != null)
+			{
+				_dbContext.Products.Remove(product);
+			}
+			return await _dbContext.SaveChangesAsync();
+		}
     }
 }
 

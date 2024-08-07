@@ -4,6 +4,7 @@ using System.Data;
 using Microsoft.AspNetCore.Mvc;
 using ProductAPI.ApplicationCore.Contracts.Services;
 using ProductAPI.ApplicationCore.Entities;
+using ProductAPI.ApplicationCore.Models;
 
 
 namespace ProductMicroserviceAPI.Controllers
@@ -12,51 +13,54 @@ namespace ProductMicroserviceAPI.Controllers
 	[Route("api/[controller]")]
 	public class ProductController:ControllerBase
 	{
-        private readonly ICustomerService _customerService;
-        private readonly IAdminService _adminService;
+        private readonly IProductService _productService;
 
-        public ProductController(ICustomerService customerService, IAdminService adminService)
+        public ProductController(IProductService productService)
         {
-            _customerService = customerService;
-            _adminService = adminService;
+            _productService = productService;
         }
+        
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts(int pageIndex, int pageSize)
+        // [HttpGet("category/{categoryId}")]
+        // public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(int categoryId)
+        // {
+        //     var products= await _customerService.GetProductsByCategoryAsync(categoryId);
+        //     return Ok(products);
+        // }
+
+        [HttpGet("GetAllProducts")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
         {
-            var products = await _customerService.GetProductsAsync(pageIndex, pageSize);
-            return Ok(products);
-        }
-
-        [HttpGet("category/{categoryId}")]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByCategory(int categoryId)
-        {
-            var products= await _customerService.GetProductsByCategoryAsync(categoryId);
-            return Ok(products);
-        }
-
-        [HttpPost]
+            var allProducts = await _productService.GetAllProducts();
+            return Ok(allProducts);
+        } 
+        
+        [HttpPost("CreateProduct")]
         //[Authorize(Roles = "Admin")]
-        public async Task<ActionResult<Product>> CreateProduct([FromBody]Product product)
+        public async Task<ActionResult<Product>> CreateProduct([FromBody]ProductViewModel product)
         {
-            await _adminService.AddProductAsync(product);
-            return Ok("");
+            var result = await _productService.CreateProduct(product);
+            if (result == 1) return Ok("Create one product successfully");
+            else return BadRequest("Failed to create product") ;
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("UpdateProduct/{id}")]
         //[Authorize(Roles = "Admin")]
-        public async Task<ActionResult> UpdateProduct(int id, Product product)
+        public async Task<ActionResult> UpdateProduct(int id, ProductViewModel product)
         {
-            await _adminService.UpdateProductAsync(product);
-            return NoContent();
+            var result = await _productService.UpdateProduct(product);
+            if (result == 1) return Ok("Update one product successfully");
+            else return BadRequest("Failed to update product");
+            
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("DeleteProduct/{id}")]
         //[Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteProduct(int id)
         {
-            await _adminService.DeleteProductAsync(id);
-            return NoContent();
+            var result = await _productService.DeleteProduct(id);
+            if (result == 1) return Ok("Delete products successfully");
+            else return BadRequest("Failed to delete products");
         }
     }
 }

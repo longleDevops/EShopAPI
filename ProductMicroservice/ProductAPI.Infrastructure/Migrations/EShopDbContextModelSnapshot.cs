@@ -22,7 +22,7 @@ namespace ProductAPI.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("ProductAPI.ApplicationCore.Entities.CategoryVariation", b =>
+            modelBuilder.Entity("ProductAPI.Authentication.ApplicationCore.Entities.CategoryVariation", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -44,7 +44,7 @@ namespace ProductAPI.Infrastructure.Migrations
                     b.ToTable("CatergoryVariation", (string)null);
                 });
 
-            modelBuilder.Entity("ProductAPI.ApplicationCore.Entities.Product", b =>
+            modelBuilder.Entity("ProductAPI.Authentication.ApplicationCore.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,7 +84,7 @@ namespace ProductAPI.Infrastructure.Migrations
                     b.ToTable("Product", (string)null);
                 });
 
-            modelBuilder.Entity("ProductAPI.ApplicationCore.Entities.ProductCategory", b =>
+            modelBuilder.Entity("ProductAPI.Authentication.ApplicationCore.Entities.ProductCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -106,7 +106,7 @@ namespace ProductAPI.Infrastructure.Migrations
                     b.ToTable("ProductCategory", (string)null);
                 });
 
-            modelBuilder.Entity("ProductAPI.ApplicationCore.Entities.ProductVariationValues", b =>
+            modelBuilder.Entity("ProductAPI.Authentication.ApplicationCore.Entities.ProductVariationValues", b =>
                 {
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -121,7 +121,7 @@ namespace ProductAPI.Infrastructure.Migrations
                     b.ToTable("ProductVariationvalues", (string)null);
                 });
 
-            modelBuilder.Entity("ProductAPI.ApplicationCore.Entities.VariationValue", b =>
+            modelBuilder.Entity("ProductAPI.Authentication.ApplicationCore.Entities.VariationValue", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -129,7 +129,7 @@ namespace ProductAPI.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CategoryVariationId")
+                    b.Property<int?>("CategoryVariationId")
                         .HasColumnType("int");
 
                     b.Property<string>("Value")
@@ -146,9 +146,9 @@ namespace ProductAPI.Infrastructure.Migrations
                     b.ToTable("VariationValue", (string)null);
                 });
 
-            modelBuilder.Entity("ProductAPI.ApplicationCore.Entities.CategoryVariation", b =>
+            modelBuilder.Entity("ProductAPI.Authentication.ApplicationCore.Entities.CategoryVariation", b =>
                 {
-                    b.HasOne("ProductAPI.ApplicationCore.Entities.ProductCategory", "ProductCategory")
+                    b.HasOne("ProductAPI.Authentication.ApplicationCore.Entities.ProductCategory", "ProductCategory")
                         .WithMany("CategoryVariations")
                         .HasForeignKey("ProductCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -157,38 +157,36 @@ namespace ProductAPI.Infrastructure.Migrations
                     b.Navigation("ProductCategory");
                 });
 
-            modelBuilder.Entity("ProductAPI.ApplicationCore.Entities.Product", b =>
+            modelBuilder.Entity("ProductAPI.Authentication.ApplicationCore.Entities.Product", b =>
                 {
-                    b.HasOne("ProductAPI.ApplicationCore.Entities.ProductCategory", "ProductCategory")
+                    b.HasOne("ProductAPI.Authentication.ApplicationCore.Entities.ProductCategory", null)
                         .WithMany("Products")
                         .HasForeignKey("ProductCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("ProductCategory");
                 });
 
-            modelBuilder.Entity("ProductAPI.ApplicationCore.Entities.ProductCategory", b =>
+            modelBuilder.Entity("ProductAPI.Authentication.ApplicationCore.Entities.ProductCategory", b =>
                 {
-                    b.HasOne("ProductAPI.ApplicationCore.Entities.ProductCategory", "ParentCategory")
+                    b.HasOne("ProductAPI.Authentication.ApplicationCore.Entities.ProductCategory", "ParentCategory")
                         .WithMany("ChildCategories")
                         .HasForeignKey("ParentCategoryId");
 
                     b.Navigation("ParentCategory");
                 });
 
-            modelBuilder.Entity("ProductAPI.ApplicationCore.Entities.ProductVariationValues", b =>
+            modelBuilder.Entity("ProductAPI.Authentication.ApplicationCore.Entities.ProductVariationValues", b =>
                 {
-                    b.HasOne("ProductAPI.ApplicationCore.Entities.Product", "Product")
-                        .WithMany("VariationValuesOfProduct")
+                    b.HasOne("ProductAPI.Authentication.ApplicationCore.Entities.Product", "Product")
+                        .WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ProductAPI.ApplicationCore.Entities.VariationValue", "VariationValue")
-                        .WithMany("ProductOfVariationValues")
+                    b.HasOne("ProductAPI.Authentication.ApplicationCore.Entities.VariationValue", "VariationValue")
+                        .WithMany()
                         .HasForeignKey("VariationValueId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Product");
@@ -196,39 +194,25 @@ namespace ProductAPI.Infrastructure.Migrations
                     b.Navigation("VariationValue");
                 });
 
-            modelBuilder.Entity("ProductAPI.ApplicationCore.Entities.VariationValue", b =>
+            modelBuilder.Entity("ProductAPI.Authentication.ApplicationCore.Entities.VariationValue", b =>
                 {
-                    b.HasOne("ProductAPI.ApplicationCore.Entities.CategoryVariation", "CategoryVariation")
+                    b.HasOne("ProductAPI.Authentication.ApplicationCore.Entities.CategoryVariation", null)
                         .WithMany("VariationValues")
-                        .HasForeignKey("CategoryVariationId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CategoryVariation");
+                        .HasForeignKey("CategoryVariationId");
                 });
 
-            modelBuilder.Entity("ProductAPI.ApplicationCore.Entities.CategoryVariation", b =>
+            modelBuilder.Entity("ProductAPI.Authentication.ApplicationCore.Entities.CategoryVariation", b =>
                 {
                     b.Navigation("VariationValues");
                 });
 
-            modelBuilder.Entity("ProductAPI.ApplicationCore.Entities.Product", b =>
-                {
-                    b.Navigation("VariationValuesOfProduct");
-                });
-
-            modelBuilder.Entity("ProductAPI.ApplicationCore.Entities.ProductCategory", b =>
+            modelBuilder.Entity("ProductAPI.Authentication.ApplicationCore.Entities.ProductCategory", b =>
                 {
                     b.Navigation("CategoryVariations");
 
                     b.Navigation("ChildCategories");
 
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("ProductAPI.ApplicationCore.Entities.VariationValue", b =>
-                {
-                    b.Navigation("ProductOfVariationValues");
                 });
 #pragma warning restore 612, 618
         }

@@ -45,6 +45,8 @@
     <Content Include="..\.dockerignore">
       <Link>.dockerignore</Link>
     </Content>
+    <Content Remove="Infrastructure\**" />
+    <Content Remove="ApplicationCore\**" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
@@ -87,6 +89,8 @@
     <Compile Remove="OrderAPI.ApplicationCore\obj\Release\net8.0\OrderAPI.ApplicationCore.GlobalUsings.g.cs" />
     <Compile Remove="OrderAPI.Infrastructure\**" />
     <Compile Remove="OrderAPI.ApplicationCore\**" />
+    <Compile Remove="Infrastructure\**" />
+    <Compile Remove="ApplicationCore\**" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="OrderAPI.Infrastructure\obj\OrderAPI.Infrastructure.csproj.EntityFrameworkCore.targets" />
@@ -145,10 +149,14 @@
     <None Remove="Helper\" />
     <None Remove="OrderAPI.Infrastructure\**" />
     <None Remove="OrderAPI.ApplicationCore\**" />
+    <None Remove="Infrastructure\**" />
+    <None Remove="ApplicationCore\**" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="OrderAPI.Infrastructure\**" />
     <EmbeddedResource Remove="OrderAPI.ApplicationCore\**" />
+    <EmbeddedResource Remove="Infrastructure\**" />
+    <EmbeddedResource Remove="ApplicationCore\**" />
   </ItemGroup>
   <ItemGroup>
     <_ContentIncludedByDefault Remove="OrderAPI.Infrastructure\obj\OrderAPI.Infrastructure.csproj.nuget.dgspec.json" />
@@ -160,8 +168,26 @@
     <_ContentIncludedByDefault Remove="OrderAPI.Infrastructure\bin\Debug\net8.0\OrderAPI.Infrastructure.deps.json" />
     <_ContentIncludedByDefault Remove="OrderAPI.Infrastructure\bin\Debug\net8.0\OrderAPI.Infrastructure.runtimeconfig.json" />
     <_ContentIncludedByDefault Remove="OrderAPI.Infrastructure\obj\Debug\net8.0\OrderAPI.Infrastructure.sourcelink.json" />
+    <_ContentIncludedByDefault Remove="Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json" />
+    <_ContentIncludedByDefault Remove="Infrastructure\bin\Debug\net8.0\Infrastructure.runtimeconfig.json" />
+    <_ContentIncludedByDefault Remove="Infrastructure\bin\Debug\net8.0\OrderAPI.Infrastructure.deps.json" />
+    <_ContentIncludedByDefault Remove="Infrastructure\bin\Debug\net8.0\OrderAPI.Infrastructure.runtimeconfig.json" />
+    <_ContentIncludedByDefault Remove="Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json" />
+    <_ContentIncludedByDefault Remove="Infrastructure\obj\Debug\net8.0\OrderAPI.Infrastructure.sourcelink.json" />
+    <_ContentIncludedByDefault Remove="Infrastructure\obj\Infrastructure.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="Infrastructure\obj\OrderAPI.Infrastructure.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="Infrastructure\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="Infrastructure\obj\project.packagespec.json" />
+    <_ContentIncludedByDefault Remove="ApplicationCore\bin\Debug\net8.0\ApplicationCore.deps.json" />
+    <_ContentIncludedByDefault Remove="ApplicationCore\bin\Debug\net8.0\OrderAPI.ApplicationCore.deps.json" />
+    <_ContentIncludedByDefault Remove="ApplicationCore\obj\ApplicationCore.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="ApplicationCore\obj\Debug\net8.0\ApplicationCore.sourcelink.json" />
+    <_ContentIncludedByDefault Remove="ApplicationCore\obj\Debug\net8.0\OrderAPI.ApplicationCore.sourcelink.json" />
+    <_ContentIncludedByDefault Remove="ApplicationCore\obj\OrderAPI.ApplicationCore.csproj.nuget.dgspec.json" />
+    <_ContentIncludedByDefault Remove="ApplicationCore\obj\project.assets.json" />
+    <_ContentIncludedByDefault Remove="ApplicationCore\obj\project.packagespec.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="OrderAPI.Infrastructure\OrderAPI.Infrastructure.csproj" />
+    <ProjectReference Include="Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 </Project>

@@ -5,13 +5,12 @@ namespace ProductAPI.ApplicationCore.Contracts.Repositories
 {
 	public interface IProductRepository
 	{
-		Task<IEnumerable<Product>> GetProductsAsync();
+		Task<IEnumerable<Product>> GetAllProducts();
 	
-		Task<Product> GetProductByIdAsync(int id);
-		Task CreateProductAsync(Product product);
-		Task UpdateProductAsync(Product product);
-		Task DeleteProductAsync(int id);
-        Task<IEnumerable<Product>> GetProductsAsync(int pageIndex, int pageSize);
+		Task<Product> GetProductById(int id);
+		Task<int> CreateProduct(Product product);
+		Task<int> UpdateProduct(Product product);
+		Task<int> DeleteProduct(int id);
     }
 }
 

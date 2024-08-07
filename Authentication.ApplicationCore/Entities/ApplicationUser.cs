@@ -8,7 +8,7 @@ public class ApplicationUser: IdentityUser<Guid>
     {
             
     }
-
+    
     public ApplicationUser(string firstName, string lastName, DateTime dateOfBirth)
     {
         FirstName = firstName;

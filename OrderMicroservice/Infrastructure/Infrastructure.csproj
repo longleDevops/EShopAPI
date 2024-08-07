@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>OrderAPI.Infrastructure</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,9 +18,6 @@
     <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OrderAPI.ApplicationCore\OrderAPI.ApplicationCore.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
@@ -28,5 +26,8 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="RabbitMQ.Client" Version="6.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationCore\ApplicationCore.csproj" />
   </ItemGroup>
 </Project>

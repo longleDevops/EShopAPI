@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductAPI.Infrastructure.Data;
 
@@ -11,9 +12,11 @@ using ProductAPI.Infrastructure.Data;
 namespace OrderAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(EShopDbContext))]
-    partial class EShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240712050007_Migration5")]
+    partial class Migration5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +25,7 @@ namespace OrderAPI.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.Order", b =>
+            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -69,7 +72,7 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.ToTable("Order", (string)null);
                 });
 
-            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.OrderDetails", b =>
+            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.OrderDetails", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -103,7 +106,7 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.ToTable("OrderDetails", (string)null);
                 });
 
-            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.OrderStatus", b =>
+            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.OrderStatus", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -124,7 +127,7 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.ToTable("OrderStatus", (string)null);
                 });
 
-            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.PaymentMethod", b =>
+            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.PaymentMethod", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -159,7 +162,7 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.ToTable("PaymentMethods");
                 });
 
-            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.PaymentType", b =>
+            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.PaymentType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -176,9 +179,9 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.ToTable("PaymentTypes");
                 });
 
-            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.Order", b =>
+            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.Order", b =>
                 {
-                    b.HasOne("OrderAPI.ApplicationCore.Entities.OrderStatus", "OrderStatus")
+                    b.HasOne("Order.API.Authentication.ApplicationCore.Entities.OrderStatus", "OrderStatus")
                         .WithMany()
                         .HasForeignKey("OrderStatusId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -187,9 +190,9 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.Navigation("OrderStatus");
                 });
 
-            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.OrderDetails", b =>
+            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.OrderDetails", b =>
                 {
-                    b.HasOne("OrderAPI.ApplicationCore.Entities.Order", "Order")
+                    b.HasOne("Order.API.Authentication.ApplicationCore.Entities.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -198,9 +201,9 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.PaymentMethod", b =>
+            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.PaymentMethod", b =>
                 {
-                    b.HasOne("OrderAPI.ApplicationCore.Entities.PaymentType", "PaymentType")
+                    b.HasOne("Order.API.Authentication.ApplicationCore.Entities.PaymentType", "PaymentType")
                         .WithMany()
                         .HasForeignKey("PaymentTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -209,7 +212,7 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.Navigation("PaymentType");
                 });
 
-            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.Order", b =>
+            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.Order", b =>
                 {
                     b.Navigation("OrderDetails");
                 });

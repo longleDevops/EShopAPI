@@ -19,17 +19,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 // services
-builder.Services.AddScoped<IAdminService, AdminService>();
-builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddDbContext<EShopDbContext>(options =>
 {
-    // options.UseSqlServer(builder.Configuration.GetConnectionString("EShopDbConnection"));
-    options.UseSqlServer(Environment.GetEnvironmentVariable("EShopDbConnection"));
+     // options.UseSqlServer(builder.Configuration.GetConnectionString("EShopDbConnection"));
+     options.UseSqlServer(Environment.GetEnvironmentVariable("EShopDbConnection"));
 });
 
-var app = builder.Build();
 
+var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.

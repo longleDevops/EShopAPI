@@ -12,7 +12,6 @@ namespace ProductAPI.ApplicationCore.Entities
 		public string SKU { get; set; }
 
 		public int ProductCategoryId { get; set; }
-		public ProductCategory ProductCategory { get; set; } = null!;
 
 	}
 }
