@@ -24,7 +24,17 @@ builder.Services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IRabbitMqProducerConsumer, RabitMqProducerConsumer>();
 
-
+// Add Cors policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularDevClient", builder =>
+        {
+            builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        }
+    );
+});
 builder.Services.AddDbContext<EShopDbContext>(options =>
 {
     // options.UseSqlServer(builder.Configuration.GetConnectionString("EShopDbConnection"));
@@ -35,6 +45,7 @@ var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+app.UseCors("AllowAngularDevClient");
 
 
 app.UseAuthorization();

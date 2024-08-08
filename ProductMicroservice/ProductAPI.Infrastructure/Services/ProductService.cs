@@ -25,7 +25,7 @@ public class ProductService:IProductService
 
     public async Task<ProductViewModel> GetProductById(int id)
     {
-        var productEntity = _productRepository.GetProductById(id);
+        var productEntity = await _productRepository.GetProductById(id);
         var mapper = MapperConfig.InitializeAutomapper();
         return mapper.Map<ProductViewModel>(productEntity);
     }

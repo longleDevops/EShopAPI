@@ -28,6 +28,8 @@ namespace ProductMicroserviceAPI.Controllers
         //     return Ok(products);
         // }
 
+        
+        
         [HttpGet("GetAllProducts")]
         public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
         {
@@ -40,7 +42,7 @@ namespace ProductMicroserviceAPI.Controllers
         public async Task<ActionResult<Product>> CreateProduct([FromBody]ProductViewModel product)
         {
             var result = await _productService.CreateProduct(product);
-            if (result == 1) return Ok("Create one product successfully");
+            if (result == 1) return Ok(product);
             else return BadRequest("Failed to create product") ;
         }
 
@@ -59,7 +61,16 @@ namespace ProductMicroserviceAPI.Controllers
         public async Task<ActionResult> DeleteProduct(int id)
         {
             var result = await _productService.DeleteProduct(id);
-            if (result == 1) return Ok("Delete products successfully");
+            if (result == 1) return Ok(result);
+            else return BadRequest("Failed to delete products");
+        }
+        
+        [HttpGet("GetProductById/{id}")]
+        //[Authorize(Roles = "Admin")]
+        public async Task<ActionResult> GetProductById(int id)
+        {
+            var result = await _productService.GetProductById(id);
+            if (result != null) return Ok(result);
             else return BadRequest("Failed to delete products");
         }
     }

@@ -1,10 +1,15 @@
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using ApplicationCore.IServices;
 using Authentication.API.Entities;
+using Authentication.Models;
 using AuthenticationAPI.Entities;
 using AuthenticationAPI.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 
 namespace AuthenticationAPI.Services;
 
@@ -136,11 +141,56 @@ public class AuthenticationService:IAuthenticationServices<ApplicationUser>
     {
         var user = await _userManager.FindByEmailAsync(loginModel.Email);
 
-        if (user == null || await _userManager.CheckPasswordAsync(user,loginModel.Password))
+        if (user == null || !await _userManager.CheckPasswordAsync(user,loginModel.Password))
         {
             throw new ArgumentException($"Unable to authenticate user {loginModel.Email}");
         }
 
-        return "sdf";
+        var userRoles = await _userManager.GetRolesAsync(user);
+        var role = userRoles.FirstOrDefault().ToString();
+
+        UserLoginResponseViewModel userLoginModel = new()
+        {
+            Id = user.Id,
+            Email = user.Email,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            role = role
+        };
+
+        var token = GetToken(userLoginModel);
+        //Save token in UserToken table
+        await _userManager.SetAuthenticationTokenAsync(user, "Custom-Login", "JWT", token);
+
+        return token;
+    }
+    
+    private string GetToken(UserLoginResponseViewModel user)
+    {
+        var claims = new List<Claim>
+        {
+            new(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new(JwtRegisteredClaimNames.GivenName, user.FirstName),
+            new(JwtRegisteredClaimNames.FamilyName, user.LastName),
+            new(JwtRegisteredClaimNames.Email, user.Email),
+            new Claim(ClaimTypes.Role, user.role),
+            new Claim(JwtRegisteredClaimNames.Aud, _configuration["JWT:ValidAudience"]),
+            new Claim(JwtRegisteredClaimNames.Iss, _configuration["JWT:ValidIssuer"])
+        };
+
+        var key = Encoding.ASCII.GetBytes(_configuration["JWT:Secret"]);
+        _ = int.TryParse(_configuration["JWT:TokenValidityInMinutes"], out int tokenValidityInMinutes);
+            
+        var tokenDescriptor = new SecurityTokenDescriptor
+        {
+            Subject = new ClaimsIdentity(claims.ToArray()),
+            Expires = DateTime.UtcNow.AddMinutes(tokenValidityInMinutes),
+            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+        };
+            
+            
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+        return tokenHandler.WriteToken(token);
     }
 }

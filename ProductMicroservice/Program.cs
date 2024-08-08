@@ -23,17 +23,32 @@ builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddDbContext<EShopDbContext>(options =>
 {
-     // options.UseSqlServer(builder.Configuration.GetConnectionString("EShopDbConnection"));
-     options.UseSqlServer(Environment.GetEnvironmentVariable("EShopDbConnection"));
+     options.UseSqlServer(builder.Configuration.GetConnectionString("EShopDbConnection"));
+     // options.UseSqlServer(Environment.GetEnvironmentVariable("EShopDbConnection"));
 });
 
-
+// CORS policy
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+     options.AddPolicy("AllowAngularDevClient",
+          b =>
+          {
+               b
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+          });
+});
 var app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();
+
+// Use CORS
+app.UseCors("AllowAngularDevClient");
 
 app.UseAuthorization();
 

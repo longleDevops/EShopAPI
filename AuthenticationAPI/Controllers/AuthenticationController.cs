@@ -1,5 +1,6 @@
 using ApplicationCore.IServices;
 using Authentication.API.Entities;
+using Authentication.API.Models;
 using AuthenticationAPI.Entities;
 using AuthenticationAPI.Models;
 using Microsoft.AspNetCore.Authentication;
@@ -40,6 +41,30 @@ public class AuthenticationController:ControllerBase
             {
                 return BadRequest(response.errors.ToString());
             }
+    }
+    
+    [AllowAnonymous]
+    [HttpPost("login")]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(LoginModel))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Login([FromBody] LoginModel request)
+    {
+        try
+        {
+            var responseToken = await _authenticationServices.Login(request);
+            var response = new
+            {
+                Token = responseToken
+            };
+            return Ok(response);
+
+        }
+        catch (Exception ex)
+        {
+            ErrorResponse errorResponse = new(ex);
+            return BadRequest(errorResponse);
+        }
+
     }
     
 }
