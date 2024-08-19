@@ -35,7 +35,7 @@ builder.Services.AddCors(options =>
           b =>
           {
                b
-                    .AllowAnyOrigin()
+                    .WithOrigins("http://localhost:4200", "https://mango-rock-0b437651e.5.azurestaticapps.net")
                     .AllowAnyHeader()
                     .AllowAnyMethod();
           });
