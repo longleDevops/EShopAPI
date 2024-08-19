@@ -79,7 +79,7 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
-
+app.UseCors("AllowAngularDevClient");
 // Configure the HTTP request pipeline.
 
     app.UseSwagger();
@@ -92,7 +92,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseCors("AllowAngularDevClient");
+
 app.MapControllers();
 
 app.Run();

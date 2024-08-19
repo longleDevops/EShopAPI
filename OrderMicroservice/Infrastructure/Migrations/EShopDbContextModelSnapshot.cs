@@ -22,7 +22,7 @@ namespace OrderAPI.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.Order", b =>
+            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -69,7 +69,7 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.ToTable("Order", (string)null);
                 });
 
-            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.OrderDetails", b =>
+            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.OrderDetails", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -103,7 +103,7 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.ToTable("OrderDetails", (string)null);
                 });
 
-            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.OrderStatus", b =>
+            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.OrderStatus", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -124,7 +124,7 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.ToTable("OrderStatus", (string)null);
                 });
 
-            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.PaymentMethod", b =>
+            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.PaymentMethod", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -159,7 +159,7 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.ToTable("PaymentMethods");
                 });
 
-            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.PaymentType", b =>
+            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.PaymentType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -176,9 +176,61 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.ToTable("PaymentTypes");
                 });
 
-            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.Order", b =>
+            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.ShoppingCart", b =>
                 {
-                    b.HasOne("Order.API.Authentication.ApplicationCore.Entities.OrderStatus", "OrderStatus")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<Guid>("CustomerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ShoppingCart", (string)null);
+                });
+
+            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.ShoppingCartItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("ProductId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ProductName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Qty")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.ToTable("ShoppingCartItem", (string)null);
+                });
+
+            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.Order", b =>
+                {
+                    b.HasOne("OrderAPI.ApplicationCore.Entities.OrderStatus", "OrderStatus")
                         .WithMany()
                         .HasForeignKey("OrderStatusId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -187,9 +239,9 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.Navigation("OrderStatus");
                 });
 
-            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.OrderDetails", b =>
+            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.OrderDetails", b =>
                 {
-                    b.HasOne("Order.API.Authentication.ApplicationCore.Entities.Order", "Order")
+                    b.HasOne("OrderAPI.ApplicationCore.Entities.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -198,9 +250,9 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.PaymentMethod", b =>
+            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.PaymentMethod", b =>
                 {
-                    b.HasOne("Order.API.Authentication.ApplicationCore.Entities.PaymentType", "PaymentType")
+                    b.HasOne("OrderAPI.ApplicationCore.Entities.PaymentType", "PaymentType")
                         .WithMany()
                         .HasForeignKey("PaymentTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -209,9 +261,25 @@ namespace OrderAPI.Infrastructure.Migrations
                     b.Navigation("PaymentType");
                 });
 
-            modelBuilder.Entity("Order.API.Authentication.ApplicationCore.Entities.Order", b =>
+            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.ShoppingCartItem", b =>
+                {
+                    b.HasOne("OrderAPI.ApplicationCore.Entities.ShoppingCart", "Cart")
+                        .WithMany("ShoppingItems")
+                        .HasForeignKey("CartId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cart");
+                });
+
+            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.Order", b =>
                 {
                     b.Navigation("OrderDetails");
+                });
+
+            modelBuilder.Entity("OrderAPI.ApplicationCore.Entities.ShoppingCart", b =>
+                {
+                    b.Navigation("ShoppingItems");
                 });
 #pragma warning restore 612, 618
         }

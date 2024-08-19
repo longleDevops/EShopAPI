@@ -19,6 +19,9 @@ namespace ProductAPI.Infrastructure.Data
 
         public DbSet<PaymentMethod> PaymentMethods { get; set; }
         public DbSet<PaymentType> PaymentTypes { get; set; }
+        
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,6 +29,8 @@ namespace ProductAPI.Infrastructure.Data
             modelBuilder.Entity<OrderDetails>(ConfigureOrderDetails);
             modelBuilder.Entity<OrderStatus>(ConfigureOrderStatus);
 
+            modelBuilder.Entity<ShoppingCart>(ConfigureShoppingCart);
+            modelBuilder.Entity<ShoppingCartItem>(ConfigureShoppingCartItem);
         }
 
         private void ConfigureOrder(EntityTypeBuilder<Order> builder)
@@ -44,6 +49,18 @@ namespace ProductAPI.Infrastructure.Data
         {
             builder.ToTable("OrderStatus");
             builder.HasKey(o => o.Id);
+        }
+        
+        private void ConfigureShoppingCart(EntityTypeBuilder<ShoppingCart> builder)
+        {
+            builder.ToTable("ShoppingCart");
+            builder.HasKey(s => s.Id);
+        }
+
+        private void ConfigureShoppingCartItem(EntityTypeBuilder<ShoppingCartItem> builder)
+        {
+            builder.ToTable("ShoppingCartItem");
+            builder.HasKey(s => s.Id);
         }
     }
 }

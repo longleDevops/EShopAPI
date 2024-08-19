@@ -49,7 +49,6 @@
     <Content Remove="ApplicationCore\**" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Helper\" />
   </ItemGroup>
   <ItemGroup>

@@ -42,10 +42,10 @@ builder.Services.AddDbContext<EShopDbContext>(options =>
 });
 
 var app = builder.Build();
+app.UseCors("AllowAngularDevClient");
 
 app.UseSwagger();
 app.UseSwaggerUI();
-app.UseCors("AllowAngularDevClient");
 
 
 app.UseAuthorization();
